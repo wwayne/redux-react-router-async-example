@@ -15,15 +15,20 @@ module.exports = {
     publicPath: '/assets/'
   },
   plugins: [
+    // Hot loader
     new webpack.HotModuleReplacementPlugin(),
+    // Ignore the error when refresh web page
     new webpack.NoErrorsPlugin(),
+    // Global paramters
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('development')
       },
       '__DEVTOOLS__': process.env.DEVTOOLS === 'true' ? true : false
     }),
+    // Extract all style into a single file
     new ExtractTextPlugin('app.css', { allChunks: true }),
+    // Html template
     new HtmlWebpackPlugin({
       title: 'Redux React Router Async Example',
       filename: 'index.html',

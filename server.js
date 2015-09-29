@@ -6,6 +6,8 @@ var config = require('./webpack.config');
 var app = express();
 var compiler = webpack(config);
 
+// https://github.com/glenjamin/webpack-hot-middleware
+// so that hot loader can work on a same server that started by express
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath
